@@ -1,0 +1,8 @@
+SELECT * FROM `goods` WHERE id > 5
+SELECT * FROM `goods` WHERE id > 5 or (and,not) price < 1000
+
+SELECT * FROM `goods` ORDER BY id         выбрать по айди
+SELECT * FROM `goods` ORDER BY cost ASC     по  возростанию
+SELECT * FROM `goods` ORDER BY cost DESC    по убыванию 
+SELECT * FROM `goods` ORDER BY name         если не указывать как само выставляет по ал. порядку
+SELECT * FROM `goods` ORDER BY name ASC,cost DESC

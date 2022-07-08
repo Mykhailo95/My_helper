@@ -1,0 +1,11 @@
+docker pull node
+docker run node
+docker ps (--help помогает с описание команды)
+docker ps (показывает таблицу запущенных)
+docker ps -a
+docker rm (ID) 
+
+docker conteiner prune удал. все контейнеры
+****************************************************
+docker run -it node -запускает ноду
+.exit для выхода

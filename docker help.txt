@@ -1,0 +1,31 @@
+docker pull - позв. скачать имедж на комп.
+docker pull python
+
+https://hub.docker.com/search?q=mysql
+
+docker pull mysql
+
+Starting a MySQL instance is simple:
+$ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+*create mysgl
+docker run -e MYSQL_ROOT_PASSWORD=passwerd mysql
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* docker build -t my_flask_new .                                                  *
+* docker images ls                                                                *
+* docker run my_flask_new                                                         *
+*                                                                                 *
+* docker run -d -p 5000:5000 my_flask_new                                         *
+*                                                                                 *
+* wget http://127.0.0.1:5000                                                      *
+*                                                                                 *
+*                                                                                 *
+*  * * * * * * * * * * * * * * * * * * Docker Compose * * * * * * * * * * * * * * *
+* docker-compose.yml                                                              *
+* docker-compose up database                                                      *
+* mysql -u root -p                                                                *
+* USE my_sql_database                                                             *
+*                                                                                 *
+*                                                                                 *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

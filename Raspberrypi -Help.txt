@@ -1,0 +1,56 @@
+https://medium.com/@jrcharney/connect-your-raspberry-pi-to-your-computer-via-ethernet-4564e1e68922#:~:text=Connect%20your%20Raspberry%20Pi%20using,make%20sure%20things%20are%20connected
+----------------------------------------------------------------------------------
+https://okdk.ru/kak-ispolzovat-noutbuk-s-windows-v-kachestve-monitora-dlya-raspberry-pi/
+-----------------------------Настройка Экрана------------------------------------
+https://www.youtube.com/watch?v=BFvNoXRyNjI
+---------------------------------------------------------------------------------
+
+df -h -Показывает сколько свободнго места на диске
+
+http://192.168.0.1/
+DHCP->список клиентов
+192.168.0.108
+PuTTY -вводим ip 
+
+apt update
+apt install gnome-core kali-defaults kali-root-login desktop-base
+update-alternatives --config x-session-manager
+0
+
+
+kalipi-config
+03 Boot Options
+B1, B4
+07, A5 
+
+apt install x11vnc
+x11vnc -storepasswd "1234" /etc/x11vnc.pass
+
+reboot
+
+x11vnc -rfbauth /etc/x11vnc.pass -shared -many
+x11vnc -rfbauth /etc/systemd/system/x11vnc.service -shared -many
+
+
+sudo apt-get install tightvncserver
+tightvncserver
+kali123456
+
+apt-get remove tightvncserver
+apt-get remove gnome-core
+
+
+
+
+в приложении VNC Viewer
+192.168.0.108:1
+
+-----------------server-vnc-settings x11vnc-----------------------------
+sudo rm /var/lib/dpkg/triggers/Unincorp
+sudo touch /var/lib/dpkg/triggers/Unincorp
+
+And then just run
+sudo dpkg --configure -a
+
+*********			**********			*********	******
+x11vnc -ncache 10 -auth guess -nap -forever -loop -repeat -rfbauth /root/.vnc/passwd -rfbport 5900

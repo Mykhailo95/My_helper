@@ -1,0 +1,150 @@
+docker pull mysql
+docker run --name mysql_example -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql
+    если в докере не запускается нужно в службах освободить порт 3306 и заного вып. ком.
+
+		Экспорт 
+docker exec -it  home_work mysqldump -uroot -proot students_db > C:\Users\ASUS\Desktop>test_db.sql
+
+Docker-Containers-CLI-->
+    # mysql -u root -p
+                        root
+mysql>
+    SHOW DATABASES;                       - пок. даты б/д которые есть
+    CREATE DATABASE users(name bd);       - создание б/д
+    USE                                   - для работы с конкр. б/д
+    USE users;
+    
+    CREATE TABLE genders(name) (          - в скобках указ колонки и типы данных таблицы
+        -> id INT PRIMARY KEY,
+        -> name VARCHAR(50),
+        -> created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP   - указ. чтобы присваивалось автоматически с текущ. временем
+        -> );
+
+    SHOW TABLES                          - показать таблицы
+    
+    CREATE TABLE users (
+        -> id INT PRIMARY KEY,
+        -> name VARCHAR(50),
+        -> email VARCHAR(128),
+        -> password VARCHAR(56),        - в откз. виде хранить в Б/Д нельзя|---------------------------------------------+
+                                        |   1. Encrypt (внчале шифровать и потом загр. на Б/Д) 2.                        |
+                                        |   2. Хешировать , и в б/д хронить хеш этого пароля - распостроненная технология|
+                                        +--------------------------------------------------------------------------------+  
+        -> age TINYINT UNSIGNED,        - обозн. что он отриц. не будет  (255 байт будет выдел.)
+        -> gender_id INT,               - ссыдка на id (Будет храниться индификатор genders)
+        -> created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        -> FOREIGN KEY (gender_id) REFERENCES genders (id)   - связь стр. данных одной таблицы с стр. данных другой страницы
+        -> ON DELETE SET NULL           - если будет удален FOREIGN KEY к которому привязан Гендер то будет Null
+        -> ON UPDATE CASCADE            - есди обновим Гендер тогда изминения будут примен. и к Нашей форм табличке users
+                                          CASCADE - выполнять для двоих таблиц 
+        -> );
+
+    SELECT * FROM genders;
+
+INSERT - созд. данные добавить в таблицу
+ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name
++--------------------------------------- Основные операторы SQL ---------------------------------------+
+|
+| Oператоры определения данных (Data Definition Language, DDL):
+|     CREATE       - создаёт объект БД (саму базу, таблицу, представление, пользователя и т. д.),
+|     ALTER        - изменяет объект,
+|     DROP         -  удаляет объект;
+|     
+| Oператоры манипуляции данными (Data Manipulation Language, DML):
+|     SELECT       - выбирает данные, удовлетворяющие заданным условиям,
+|     INSERT       - добавляет новые данные,
+|     UPDATE       - изменяет существующие данные,
+|     DELETE       - удаляет данные;
+|     
+| Oператоры определения доступа к данным (Data Control Language, DCL):
+|     GRANT        - предоставляет пользователю (группе) разрешения на определённые операции с объ.
+|     REVOKE       - отзывает ранее выданные разрешения,
+|     операторы    - управления транзакциями (Transaction Control Language, TCL):
+|     COMMIT       - применяет транзакцию,
+|     ROLLBACK     - откатывает все изменения, сделанные в контексте текущей транзакции,
+|     SAVEPOINT    - делит транзакцию на более мелкие участки.
++-------------------------------------------------------------------------------------------------------+
+
++---------------------------------------------------------+
+|                    mysq data typs                       |
+| https://dev.mysql.com/doc/refman/8.0/en/data-types.html |
+| https://www.w3schools.com/sql/sql_datatypes.asp    **** |
++---------------------------------------------------------+
+
++---------------------------------------------------------+
+|  open MYSQL Workbench -> MYSQL Connections press +      |
+|  Conne. Name mysql_example  Con. Meth. standart(tcp/ip) |
+| в поле port указываем тот которые ставили (3306)        |
++---------------------------------------------------------+
+
++--------------------------------------------S3---------------------------------------------------------------------------------------------------------------------------------------------+
+| S3 - для облоко для хронения изображенияб видеоб музыки                                                                                                                                                                                                                               |
+| Ссылку на изображение и прочее можно ро она должна хоститься на облоке                                                                                                                                                                                                                |
+| в обычной б/д НЕ РЕКОМЕНДУЕТСЯ хранить изображения так как будет загружаться весом                                                                                                                                                                                                    |
+| https://www.scaleway.com/en/object-storage-create/?utm_source=google&utm_medium=cpc&utm_campaign=storage-eu-others&utm_term=object-storage-s3&utm_content=scalable-object-storage&gclid=CjwKCAjw-8qVBhANEiwAfjXLrn4VBLwO-SpHkUjltaQBMuoIkTP6JO-_RNeHCc4qmSdzdSXh8Ic7ERoCVH0QAvD_BwE   |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------Создание таблицы в MYSQL Workbench -------------------------+
+| USE users;
+| CREATE TABLE contacts (
+| 	id INT PRIMARY KEY,
+|     name VARCHAR(56),
+|     email VARCHAR(128),
+|     phone CHAR(13),
+|     favorite BOOLEAN,
+|     user_id INT,
+|     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+|     FOREIGN KEY (user_id) REFERENCES users (id)
+| 		ON DELETE CASCADE 
+|         ON UPDATE CASCADE
+| );
++-----------------------------------------------------------------------------------+
+
+https://www.youtube.com/watch?v=nKUEU9AtrNg&list=LL&index=2&t=737s
+Для заполнения не в терминале то MYSQL в вкладке Queri1 вводится 
+    INSERT INTO genders (id, name) VALUES (1, 'male'), (2, 'female'), (3, 'unknow');
+    USE users;
+    INSERT INTO contacts (id, name, email,phone,favorite, user_id)
+    VALUES (3, "masha", "misha@mis.ha","+3809947376", 0, 1);
+
+SELECT name, email, user_id FROM users.contacts ORDER BY name; - пол. конкр. данных по сартировки имени
+    SELECT name, email, user_id FROM users.contacts 
+    WHERE name LIKE "m%"
+    ORDER BY name DESC;                         - ( DESC- по порядку, ASC - реверс)
+
+    SELECT max(age) as max_age FROM users ;     - пример
+           avg(age)                             - средний возрвст
+
+                                Вложенный Селект
+SELECT * FROM contacts
+WHERE user_id IN (SELECT id FROM users
+    WHERE name LIKE "m%" );
+
+                                        JOIN
+    SELECT contacts.name , users.name, contacts.phone
+    FROM users
+    INNER JOIN contacts ON users.id = contacts.user_id;
+---+
+    SELECT users.name, genders.name
+    FROM users                                           -- вынос имени с таблички  users.name и к какой
+    INNER JOIN genders ON users.gender_id = genders.id;     категории он пренадлежит (выв. не цифру, а название)
+---+
+    SELECT users.id, users.name, contacts.name as contact
+    FROM users
+    LEFT JOIN contacts ON users.id = contacts.user_id;
+---+
+    SELECT users.id, users.name, contacts.name as contact
+    FROM contacts
+    RIGHT JOIN users ON users.id = contacts.user_id;
+    
++-------------------------------------------------------------------------------------------
+|                                       UPDATE
+|   UPDATE users SET указываем что делаем WHERE для чего (где находится этот элемент)
+|   UPDATE users SET gender_id = 2 WHERE id = 2;|
+|                                       DELETE
+|   DELETE FROM Откуда WHERE Какой эллемент;
+|   DELETE FROM contacts WHERE id = 4;|
+|                                       TRUNCATE 
+|   TRUNCATE TABLE contact;  - удал. все из таблицы
+|
+|                                       DROP 
+|   DROP TABLE contact;      - удал. самой таблицы
