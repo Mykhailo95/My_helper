@@ -7,4 +7,3 @@ SELECT * FROM `goods` ORDER BY cost DESC    по убыванию
 SELECT * FROM `goods` ORDER BY name         если не указывать как само выставляет по ал. порядку
 SELECT * FROM `goods` ORDER BY name ASC,cost DESC
 
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIyws1VQiebdVUnv1qtELBggdRTFPsimrXE4u80PuFjkiejETNt11HHaamN8ezE/MGKqDir3cVXYw0AFrS97KhBZumdfx6xGHoUMtNpXL/qlg2rcNbc13vA6+pLXP+N1/1Ou9T3F8CFnHgGDdxSUVyTVuFATDRC8ESD1Oq4Y9okTVNbOzNAgTft/dCnyi8C0SNSE3Frr0XkCXJ1y73sgcjFg1HMJ5G28j5BvYpJSdmdk/ewmkXDHS78r04QKN4MC9krEFznUNAUX4e3TdQ081zinuDfddcdam4q5yuiz8tPwCO6QKByjcp7nSBA+UW4cFGd7Tzo8uVKHblOvGilsiJ rsa-key-20220824
