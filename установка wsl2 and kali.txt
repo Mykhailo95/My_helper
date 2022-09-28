@@ -8,5 +8,7 @@ step 4 устанавливаем exe и после ->
 в виндовс маркет устанавливаем кали линух 
 запускаем Kali
 
+git clone https://github.com/waveshare/LCD-show.git
+
 Как перейти в домашнюю папку Ubuntu из Windows:
 \\wsl$\Ubuntu\home\<username>
